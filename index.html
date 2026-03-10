@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clarissa Micol Della Colletta</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --yellow: #e9c46a;
+            --teal: #2a9d8f;
+            --indigo: #264653;
+            --light: #f4f9f8;
+            --text: #1a1a2e;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--light);
+            color: var(--text);
+        }
+
+        /* NAV */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 60px;
+            background: var(--indigo);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-logo {
+            font-family: 'Space Mono', monospace;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--yellow);
+        }
+
+        .nav-links a {
+            margin-left: 28px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--yellow); }
+
+        /* HERO */
+        .hero {
+            background: var(--indigo);
+            color: white;
+            padding: 80px 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+        }
+
+        .hero-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center top;
+            border: 4px solid var(--yellow);
+            flex-shrink: 0;
+        }
+
+        .hero-text h1 {
+            font-family: 'Space Mono', monospace;
+            font-size: 2.4rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+
+        .hero-text h1 span { color: var(--yellow); }
+
+        .hero-text .tagline {
+            font-size: 1rem;
+            color: var(--teal);
+            margin-bottom: 20px;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+        }
+
+        .hero-text p {
+            font-size: 0.97rem;
+            line-height: 1.7;
+            color: #cdd6e0;
+            max-width: 480px;
+            margin-bottom: 28px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 11px 24px;
+            border-radius: 8px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--yellow);
+            color: var(--indigo);
+        }
+
+        .btn-primary:hover {
+            background: #f0c94a;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--yellow);
+            color: var(--yellow);
+            transform: translateY(-2px);
+        }
+
+        /* SECTIONS */
+        .section {
+            padding: 70px 60px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section h2 {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--indigo);
+            margin-bottom: 36px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section h2::after {
+            content: '';
+            flex: 1;
+            height: 3px;
+            background: linear-gradient(to right, var(--teal), transparent);
+            border-radius: 2px;
+        }
+
+        /* SKILLS */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill-tag {
+            background: var(--indigo);
+            color: var(--yellow);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            font-family: 'Space Mono', monospace;
+            transition: transform 0.2s;
+        }
+
+        .skill-tag:hover { transform: translateY(-2px); }
+
+        /* PROJECTS */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: 0 4px 20px rgba(38,70,83,0.08);
+            transition: transform 0.2s;
+            border-top: 4px solid var(--teal);
+        }
+
+        .project-card:hover { transform: translateY(-4px); }
+
+        .project-emoji {
+            font-size: 2rem;
+            margin-bottom: 14px;
+        }
+
+        .project-card h3 {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--indigo);
+            margin-bottom: 8px;
+        }
+
+        .project-card p {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 18px;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 18px;
+        }
+
+        .project-tag {
+            background: #e8f4f2;
+            color: var(--teal);
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 10px;
+        }
+
+        .project-links a {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--indigo);
+            text-decoration: none;
+            padding: 7px 16px;
+            border: 2px solid var(--indigo);
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .project-links a:hover {
+            background: var(--indigo);
+            color: var(--yellow);
+        }
+
+        /* ABOUT */
+        .about-box {
+            background: white;
+            border-radius: 16px;
+            padding: 36px;
+            box-shadow: 0 4px 20px rgba(38,70,83,0.08);
+            line-height: 1.8;
+            font-size: 0.97rem;
+            color: #555;
+            border-left: 4px solid var(--yellow);
+        }
+
+        .about-box p { margin-bottom: 12px; }
+        .about-box p:last-child { margin-bottom: 0; }
+
+        /* CONTACT */
+        .contact-box {
+            background: var(--indigo);
+            border-radius: 16px;
+            padding: 48px 36px;
+            text-align: center;
+            color: white;
+        }
+
+        .contact-box h3 {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            color: var(--yellow);
+        }
+
+        .contact-box p {
+            color: #cdd6e0;
+            margin-bottom: 28px;
+            font-size: 0.97rem;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #888;
+            font-size: 0.85rem;
+            font-family: 'Space Mono', monospace;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 700px) {
+            nav { padding: 16px 24px; }
+            .hero { flex-direction: column; text-align: center; padding: 48px 24px; gap: 32px; }
+            .hero-buttons { justify-content: center; }
+            .hero-text p { margin: 0 auto 28px; }
+            .section { padding: 48px 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-logo">clarissa.dev</div>
+        <div class="nav-links">
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <img src="photo.jpg" alt="Clarissa" class="hero-photo" />
+        <div class="hero-text">
+            <h1>Hi, I'm <span>Clarissa</span></h1>
+            <p class="tagline">// self-taught developer · curious by nature</p>
+            <p>I started learning to code on my own about a year ago, beginning with HTML, CSS and JavaScript. Now I'm expanding into Python, Flask, Linux and IT. I love building things and figuring out how stuff works.</p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">See my work</a>
+                <a href="https://github.com/MicolDellaColletta" target="_blank" class="btn btn-outline">GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section" id="skills">
+        <h2>Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-tag">HTML</div>
+            <div class="skill-tag">CSS</div>
+            <div class="skill-tag">JavaScript</div>
+            <div class="skill-tag">Python</div>
+            <div class="skill-tag">Flask</div>
+            <div class="skill-tag">SQLite</div>
+            <div class="skill-tag">Linux</div>
+            <div class="skill-tag">Git & GitHub</div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section" id="projects">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-emoji">🌱</div>
+                <h3>Habit Tracker</h3>
+                <p>A full-stack web app to track daily habits. Features user authentication, streak tracking, a 21-day heatmap, and weekly stats.</p>
+                <div class="project-tags">
+                    <span class="project-tag">Python</span>
+                    <span class="project-tag">Flask</span>
+                    <span class="project-tag">SQLite</span>
+                    <span class="project-tag">HTML/CSS</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://habit-tracker-production-d737.up.railway.app" target="_blank">Live demo</a>
+                    <a href="https://github.com/MicolDellaColletta/habit-tracker" target="_blank">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+        <h2>About Me</h2>
+        <div class="about-box">
+            <p>I'm a self-taught developer based in Porto, Portugal. I started learning to code about a year ago out of pure curiosity — no bootcamp, no degree, just me, the internet, and a lot of trial and error.</p>
+            <p>I started with the basics of web development and kept going from there. Right now I'm really enjoying Python, learning Linux, and exploring how the web actually works under the hood.</p>
+            <p>I'm looking for my first opportunity in tech — somewhere I can keep learning, contribute, and grow. I'm not afraid of being a beginner, I actually think it's pretty fun. 🌱</p>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+        <h2>Contact</h2>
+        <div class="contact-box">
+            <h3>Let's talk!</h3>
+            <p>I'm open to junior roles, internships, or just a chat. Feel free to reach out!</p>
+            <div class="contact-links">
+                <a href="mailto:micoldellacolletta@gmail.com" class="btn btn-primary">✉ Email me</a>
+                <a href="https://github.com/MicolDellaColletta" target="_blank" class="btn btn-outline">GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        // made by clarissa · 2026
+    </footer>
+
+</body>
+</html>
